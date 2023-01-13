@@ -1,0 +1,247 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
+    integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+    integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<div class="admin">
+    <app-admin></app-admin>
+    <section id="management-users" class="container">
+        <div class="d-flex flex-row gap-4 mt-4" >
+            <!-- Lọc theo tên người dùng -->
+            <mat-form-field appearance="fill">
+                <mat-label>Người dùng</mat-label>
+                <input matInput placeholder="Nguyễn Đình Huy">
+                <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
+            <!-- Lọc theo các khóa -->
+            <mat-form-field appearance="fill">
+                <mat-label>Các khóa</mat-label>
+                <mat-select>
+                    <mat-option>Khóa 58</mat-option>
+                    <mat-option value="valid">Khóa 59</mat-option>
+                    <mat-option value="invalid">Cựu Sinh Viên</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- Lọc theo vai trò -->
+            <mat-form-field appearance="fill">
+                <mat-label>Vai trò</mat-label>
+                <mat-select>
+                    <mat-option>Giảng viên</mat-option>
+                    <mat-option value="valid">Người Dùng</mat-option>   
+                </mat-select>
+            </mat-form-field>
+            <div class="d-flex flex-row-reverse w-50">
+                <!-- Xóa  -->
+                <button mat-fab class="ms-2" style="background-color: red;">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <!-- Thêm -->
+                <button (click)="addUser()" mat-fab style="background-color: green;">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+    </div>
+        <div class="">
+            <div class="row" style="min-height: 500px;">
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="table-responsive">
+                            <table class="table project-list-table table-nowrap align-middle table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th scope="col">Tên người dùng</th>
+                                        <th scope="col">Tài khoản</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Thời gian tạo</th>
+                                        <th scope="col" style="width: 200px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="ps-4">
+                                            <div class="form-check font-size-16"><input type="checkbox"
+                                                    class="form-check-input" id="contacusercheck5" /><label
+                                                    class="form-check-label" for="contacusercheck5"></label></div>
+                                        </th>
+                                        <td>
+                                            <div class="avatar-sm d-inline-block me-2">
+                                                <div class="avatar-title bg-soft-primary rounded-circle text-primary"><i
+                                                        class="mdi mdi-account-circle m-0"></i></div>
+                                            </div>
+                                            <a href="#" class="text-body">Nguyễn Huy</a>
+                                        </td>
+                                        <td>nguyenhuy</td>
+                                        <td>nguyenhuy@gmail.com</td>
+                                        <td>25-07-2022</td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <div data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"
+                                                        (click)="edit('huy')"><i
+                                                            class="bx bx-pencil font-size-18"></i></div>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <div data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
+                                                            class="bx bx-trash-alt font-size-18"></i></div>
+                                                </li>
+                                                
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="ps-4">
+                                            <div class="form-check font-size-16"><input type="checkbox"
+                                                    class="form-check-input" id="contacusercheck6" /><label
+                                                    class="form-check-label" for="contacusercheck6"></label></div>
+                                        </th>
+                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                                class="avatar-sm rounded-circle me-2" /><a href="#"
+                                                class="text-body">Nguyễn
+                                                Lâm</a></td>
+                                        <td>nguyenlam</td>
+                                        <td>nguyenlam@gmail.com</td>
+                                        <td>10-07-2022</td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"><i
+                                                            class="bx bx-pencil font-size-18"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
+                                                            class="bx bx-trash-alt font-size-18"></i></a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="ps-4">
+                                            <div class="form-check font-size-16"><input type="checkbox"
+                                                    class="form-check-input" id="contacusercheck7" /><label
+                                                    class="form-check-label" for="contacusercheck7"></label></div>
+                                        </th>
+                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                                class="avatar-sm rounded-circle me-2" /><a href="#"
+                                                class="text-body">Nguyễn Đức
+                                                Toàn</a></td>
+                                        <td>nguyenductoan</td>
+                                        <td>nguyenductoan@gmail.com</td>
+                                        <td>01-07-2022</td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"><i
+                                                            class="bx bx-pencil font-size-18"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
+                                                            class="bx bx-trash-alt font-size-18"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="ps-4">
+                                            <div class="form-check font-size-16"><input type="checkbox"
+                                                    class="form-check-input" id="contacusercheck8" /><label
+                                                    class="form-check-label" for="contacusercheck8"></label></div>
+                                        </th>
+                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt=""
+                                                class="avatar-sm rounded-circle me-2" /><a href="#"
+                                                class="text-body">Nguyễn Thị
+                                                Phương Anh</a></td>
+                                        <td>pa1234</td>
+                                        <td>nphanh@gmail.com</td>
+                                        <td>30-07-2022</td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"><i
+                                                            class="bx bx-pencil font-size-18"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
+                                                            class="bx bx-trash-alt font-size-18"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="ps-4">
+                                            <div class="form-check font-size-16"><input type="checkbox"
+                                                    class="form-check-input" id="contacusercheck9" /><label
+                                                    class="form-check-label" for="contacusercheck9"></label></div>
+                                        </th>
+                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt=""
+                                                class="avatar-sm rounded-circle me-2" /><a href="#"
+                                                class="text-body">Lê Thị
+                                                Lệ</a></td>
+                                        <td>lele</td>
+                                        <td>nle@gmail.com</td>
+                                        <td>30-07-2022</td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"><i
+                                                            class="bx bx-pencil font-size-18"></i></a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
+                                                            class="bx bx-trash-alt font-size-18"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0 align-items-center pb-4">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <div class="float-sm-end">
+                        <ul class="pagination mb-sm-0">
+                            <li class="page-item disabled">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

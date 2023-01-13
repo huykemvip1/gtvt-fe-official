@@ -1,0 +1,46 @@
+<!-- Team Start -->
+<div class="container-fluid py-6 px-5">
+    <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+        <h1 class="display-5 mb-0">Các khóa</h1>
+        <hr class="w-25 mx-auto bg-primary">
+    </div>
+    <div class="row g-5 justify-content-center">
+        <div class="col-lg-4">
+            <div class="team-item position-relative overflow-hidden" *ngFor="let item of courses">
+                <img class="img-fluid w-100" src="../../../assets/img/blog-1.jpg" alt="">
+                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
+                    <h3 style="cursor: pointer;" class="text-white" (click)="courseDetails(item.id)">{{item.name}}</h3>
+                    <p class="text-white text-uppercase mb-0">Cố vấn : <span>{{item.user?.first_name}} {{item.user?.last_name}}</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-4">
+            <div class="team-item position-relative overflow-hidden">
+                <img class="img-fluid w-100" src="../../../assets/img/blog-1.jpg" alt="">
+                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
+                    <h3 style="cursor: pointer;" class="text-white">Khóa <span>59</span></h3>
+                    <p class="text-white text-uppercase mb-0">Quản lý : <span>Phạm Hồng Quân</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="team-item position-relative overflow-hidden">
+                <img class="img-fluid w-100" src="../../../assets/img/blog-1.jpg" alt="">
+                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
+                    <h3 style="cursor: pointer;" class="text-white">Khóa <span>57</span></h3>
+                    <p class="text-white text-uppercase mb-0">Quản lý : <span>Vũ Hoàng Hoa</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="team-item position-relative overflow-hidden">
+                <img class="img-fluid w-100" src="../../../assets/img/blog-1.jpg" alt="">
+                <div class="team-text w-100 position-absolute top-50 text-center bg-primary p-4">
+                    <h3 style="cursor: pointer;" class="text-white">Khóa <span>56</span></h3>
+                    <p class="text-white text-uppercase mb-0">Quản lý : <span>Phạm Hồng Quân</span></p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- Team End -->

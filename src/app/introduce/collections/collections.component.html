@@ -1,0 +1,83 @@
+<!-- Courses Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row mx-0 justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center position-relative mb-5">
+                    <h1 class="display-4">Kho ảnh của bộ môn</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 pb-4" *ngFor="let collection of collections, let i = index">
+                <div class="courses-list-item position-relative d-block overflow-hidden mb-2">
+                    <img class="img-fluid" src="../../../assets/img/gtvt/{{collection.id}}.png" alt="">
+                    <div class="courses-text">
+                        <a [routerLink]="['/show-image',collection.id]" class="text-center text-white px-3">{{collection.name}}</a>
+                        <div class="border-top w-100 mt-3">
+                            <div class="d-flex justify-content-end p-4">
+                                <span class="text-white" (click)="actionFavorite(collection.id,i)"><i
+                                        class="fa fa-heart mr-2"></i>{{collection.favorite_number}}</span>
+                                <span class="text-white ps-3"  (click)="actionLike(collection.id,i)"><i
+                                        class="fa fa-thumbs-up mr-2"></i>{{collection.like_number}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 pb-4">
+                <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.html">
+                    <img class="img-fluid" src="../../../assets/img/gtvt/IMG_6475.jpg" alt="">
+                    <div class="courses-text">
+                        <h4 class="text-center text-white px-3">Khóa 59 chụp ảnh với thầy cô</h4>
+                        <div class="border-top w-100 mt-3">
+                            <div class="d-flex justify-content-end p-4">
+                                <span class="text-white "><i class="fa fa-heart mr-2"></i>20</span>
+                                <span class="text-white ps-3"><i class="fa fa-thumbs-up mr-2"></i>10</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 pb-4">
+                <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.html">
+                    <img class="img-fluid" src="../../../assets/img/gtvt/IMG_6518.jpg" alt="">
+                    <div class="courses-text">
+                        <h4 class="text-center text-white px-3">Khóa 59 chụp ảnh với thầy cô</h4>
+                        <div class="border-top w-100 mt-3">
+                            <div class="d-flex justify-content-end p-4">
+                                <span class="text-white"><i class="fa fa-heart mr-2 "></i>20</span>
+                                <span class="text-white ps-3 "><i class="fa fa-thumbs-up mr-2"></i>10</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item " *ngIf="pageCurrent !== 1">
+                            <a class="page-link user-select-none" (click)="previousPage()" tabindex="-1"
+                                aria-disabled="true">Previous</a>
+                        </li>
+                        <li *ngIf="pageCurrent < numberPages" class="page-item {{positionSelected == pageCurrent ? 'active' : ''}}"><a class="page-link"
+                                [routerLink]="['/introduce/collections'] "
+                                [queryParams]="{page : pageCurrent}">{{pageCurrent}}</a></li>
+                        <li *ngIf="pageCurrent+1 < numberPages"
+                            class="page-item {{positionSelected == pageCurrent+1 ? 'active' : ''}}"><a class="page-link"
+                                [routerLink]="['/introduce/collections'] "
+                                [queryParams]="{page : pageCurrent+1}">{{pageCurrent+1}}</a></li>
+                        <li *ngIf="pageCurrent+2 < numberPages"
+                            class="page-item {{positionSelected == pageCurrent+2 ? 'active' : ''}}"><a class="page-link"
+                                [routerLink]="['/introduce/collections'] "
+                                [queryParams]="{page : pageCurrent+2}">{{pageCurrent+2}}</a></li>
+                        <li class="page-item" *ngIf="pageCurrent+2 < numberPages">
+                            <a class="page-link user-select-none" (click)="nextPage()">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Courses End -->

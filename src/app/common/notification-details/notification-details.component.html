@@ -1,0 +1,20 @@
+<div class="notification"> 
+    
+<mat-dialog-content class="mat-typography">
+    <!-- Tiêu đề -->
+   <div class="text-center">
+    <div class="fs-2 mb-1">Thông tin cần phản hồi</div>
+    <div class="fs-6">13:30:15 25-07-2022</div>
+    <div class="fs-6">Nguyễn Đình Huy</div>
+   </div>
+    <p>
+        Tôi muốn đăng một tài liệu <br>
+        Tài liệu : Spring Boot 2 <br>
+        Môn : Lập trình
+    </p>
+    <a href="" [routerLink]="['home']" target="_blank">linkdinhkem.pdf</a>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeNotification()"  class="bg-success" >Đã xem</button>
+</mat-dialog-actions>
+</div>

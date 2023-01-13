@@ -1,0 +1,149 @@
+    <!-- Blog Start -->
+    <div class="container-fluid py-6 px-5">
+        <div class="row g-5">
+            <!-- Blog list Start -->
+            <div class="col-lg-8">
+                <div class="row g-5">
+                    <div class="col-xl-6 col-lg-12 col-md-6" *ngFor="let item of news">
+                        <div class="blog-item">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid" src="../../../assets/img/blog-1.jpg" alt="">
+                            </div>
+                            <div class="bg-secondary d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column justify-content-center text-center bg-primary text-white px-4">
+                                    <span>{{common.covertLongToDate(item.created_time) | date: "dd"}}</span>
+                                    <h5 class="text-uppercase m-0">{{common.covertLongToDate(item.created_time)  | date: "MM"}}</h5>
+                                    <span>{{common.covertLongToDate(item.created_time)  | date: "YYYY"}}</span>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center py-3 px-4">
+                                    <div class="d-flex mb-2">
+                                        <small class="text-uppercase me-3"><i class="bi bi-person me-2"></i>{{item.author}}</small>
+                                    </div>
+                                    <a class="h4" [routerLink]="['/pages/news/',item.id]">{{item.title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-xl-6 col-lg-12 col-md-6">
+                        <div class="blog-item">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid" src="../../../assets/img/blog-1.jpg" alt="">
+                            </div>
+                            <div class="bg-secondary d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column justify-content-center text-center bg-primary text-white px-4">
+                                    <span>25</span>
+                                    <h5 class="text-uppercase m-0">07</h5>
+                                    <span>2022</span>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center py-3 px-4">
+                                    <div class="d-flex mb-2">
+                                        <small class="text-uppercase me-3"><i class="bi bi-person me-2"></i>Admin</small>
+                                    </div>
+                                    <a class="h4" href="">Kết quả xét tuyển liên thông từ trình độ cao đẳng lên trình độ đại học đợt 3 năm 2022</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-6">
+                        <div class="blog-item">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid" src="../../../assets/img/blog-1.jpg" alt="">
+                            </div>
+                            <div class="bg-secondary d-flex">
+                                <div class="flex-shrink-0 d-flex flex-column justify-content-center text-center bg-primary text-white px-4">
+                                    <span>25</span>
+                                    <h5 class="text-uppercase m-0">07</h5>
+                                    <span>2022</span>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center py-3 px-4">
+                                    <div class="d-flex mb-2">
+                                        <small class="text-uppercase me-3"><i class="bi bi-person me-2"></i>Admin</small>
+                                    </div>
+                                    <a class="h4" href="">Xét đạt chuẩn và bổ nhiệm GS, PGS năm 2021</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item " *ngIf="pageCurrent !== 1">
+                                    <a class="page-link user-select-none" (click)="previousPage()" tabindex="-1"
+                                        aria-disabled="true">Previous</a>
+                                </li>
+                                <li *ngIf="pageCurrent < numberPages" class="page-item {{positionSelected == pageCurrent ? 'active' : ''}}"><a class="page-link"
+                                        [routerLink]="['/introduce/collections'] "
+                                        [queryParams]="{page : pageCurrent}">{{pageCurrent}}</a></li>
+                                <li *ngIf="pageCurrent+1 < numberPages"
+                                    class="page-item {{positionSelected == pageCurrent+1 ? 'active' : ''}}"><a class="page-link"
+                                        [routerLink]="['/introduce/collections'] "
+                                        [queryParams]="{page : pageCurrent+1}">{{pageCurrent+1}}</a></li>
+                                <li *ngIf="pageCurrent+2 < numberPages"
+                                    class="page-item {{positionSelected == pageCurrent+2 ? 'active' : ''}}"><a class="page-link"
+                                        [routerLink]="['/introduce/collections'] "
+                                        [queryParams]="{page : pageCurrent+2}">{{pageCurrent+2}}</a></li>
+                                <li class="page-item" *ngIf="pageCurrent+2 < numberPages">
+                                    <a class="page-link user-select-none" (click)="nextPage()">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog list End -->
+
+            <!-- Sidebar Start -->
+            <div class="col-lg-4">
+                <!-- Search Form Start -->
+                <div class="mb-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3" placeholder="Keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <!-- Search Form End -->
+
+                <!-- Category Start -->
+                <div class="mb-5">
+                    <h2 class="mb-4">Mục lục</h2>
+                    <div class="d-flex flex-column justify-content-start bg-secondary p-4">
+                        <a class="h5 mb-3" (click)="findByCategory(category.KhoaHoc.value)"><i class="bi bi-arrow-right text-primary me-2"></i>{{category.KhoaHoc.display}}</a>
+                        <a class="h5 mb-3" (click)="findByCategory(category.ThongBao.value)"><i class="bi bi-arrow-right text-primary me-2"></i>{{category.ThongBao.display}}</a>
+                        <a class="h5 mb-3" (click)="findByCategory(category.TuyenDung.value)"><i class="bi bi-arrow-right text-primary me-2"></i>{{category.TuyenDung.display}}</a>
+                    </div>
+                </div>
+                <!-- Category End -->
+
+                <!-- Recent Post Start -->
+                <div class="mb-5">
+                    <h2 class="mb-4">Gần nhất</h2>
+                    <div class="d-flex mb-3" *ngFor="let item of news">
+                        <img class="img-fluid" src="../../../assets/img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                        <a [routerLink]="['/pages/news/',item.id]" class="h5 d-flex align-items-center bg-secondary px-3 mb-0">{{item.title}}
+                        </a>
+                    </div>
+                    <!-- <div class="d-flex mb-3">
+                        <img class="img-fluid" src="../../../assets/img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                        <a href="" class="h5 d-flex align-items-center bg-secondary px-3 mb-0">Kết quả xét tuyển liên thông từ trình độ cao đẳng lên trình độ đại học đợt 3 năm 2022
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src="../../../assets/img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                        <a href="" class="h5 d-flex align-items-center bg-secondary px-3 mb-0">Xét đạt chuẩn và bổ nhiệm GS, PGS năm 2021
+                        </a>
+                    </div> -->
+                </div>
+                <!-- Recent Post End -->
+
+                <!-- Image Start -->
+                <div class="mb-5">
+                    <img src="../../../assets/img/blog-1.jpg" alt="" class="img-fluid">
+                </div>
+                <!-- Image End -->
+
+                
+            </div>
+            <!-- Sidebar End -->
+        </div>
+    </div>
+    <!-- Blog End -->

@@ -1,0 +1,59 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 dashboard" style="width: 280px;">
+    <div class="d-flex align-items-center mb-3 pb-4 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <img class="rounded-circle" width="100px" src="../../assets/img/user.jpg" alt="">
+        <span class="ps-3 fs-4 text-white">Admin</span>
+    </div>
+    <hr style="color: black;">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a (click)="setActive('statics')" [routerLink]="['/admin/statics']" class="{{keyActive ==='statics' ? 'active bg-primary' : ''}} nav-link d-flex flex-row align-items-center">
+                <mat-icon class="text-white " fontIcon="dashboard"></mat-icon>
+                <div class="text-white ">
+                    Thống kê
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="setActive('management-users')" [routerLink]="['/admin/management-users']" class=" {{keyActive ==='management-users' ? 'active bg-primary' : ''}} nav-link d-flex flex-row align-items-center">
+                <mat-icon class="text-white " fontIcon="manage_accounts"></mat-icon>
+                <div class="text-white ">
+                    Quản lý người dùng
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="setActive('management-news')" [routerLink]="['/admin/management-news']" class="{{keyActive ==='management-news' ? 'active bg-primary' : ''}} nav-link d-flex flex-row align-items-center">
+                <mat-icon class="text-white " fontIcon="newspaper"></mat-icon>
+                <div class="text-white ">
+                    Quản lý tin tức
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="setActive('management-documents')" [routerLink]="['/admin/management-documents']" class=" {{keyActive ==='management-documents' ? 'active bg-primary' : ''}} nav-link d-flex flex-row align-items-center">
+                <mat-icon class="text-white " fontIcon="description"></mat-icon>
+                <div class="text-white ">
+                    Quản lý tài liệu
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="setActive('management-notifications')" [routerLink]="['/admin/management-notifications']" class=" {{keyActive ==='management-notifications' ? 'active bg-primary' : ''}} nav-link d-flex flex-row align-items-center">
+                <mat-icon class="text-white " fontIcon="description"></mat-icon>
+                <div class="text-white ">
+                    Quản lý phản hồi
+                </div>
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="nav-item">
+        <a [routerLink]="['/home']"  class="nav-link d-flex flex-row align-items-center">
+            <mat-icon class="text-white " fontIcon="logout"></mat-icon>
+            <div class="text-white ">
+                Đăng xuất
+            </div>
+        </a>
+    </div>
+
+</div>

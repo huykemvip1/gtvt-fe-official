@@ -1,0 +1,125 @@
+<div class="container">
+    <div id="content" class="content p-0">
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+    
+            <div class="profile-header-content">
+                <div class="profile-header-img">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
+                </div>
+    
+                <div class="profile-header-info">
+                    <h4 class="text-white">{{user.first_name}} {{user.last_name}}</h4>
+                    <p class="m-b-sm">{{common.covertJobPositionToString(user.job_position)}}</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="profile-container">
+            <div class="row row-space-20">
+                <div class="col-md-8">
+                    <div class="tab-content p-0">
+                        <div class="tab-pane active show" id="profile-about">
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Thông tin liên lạc</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Điện thoại</td>
+                                        <td class="value">
+                                            {{user.phone_number}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Email</td>
+                                        <td class="value">
+                                           {{user.email}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Facebook</td>
+                                        <td class="value">
+                                            {{user.facebook}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Email</td>
+                                        <td class="value">
+                                            {{user.email}}
+                                        </td>
+                                    </tr>
+                                
+                                </tbody>
+                            </table>
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Thông tin cơ bản</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Chức vụ</td>
+                                        <td class="value">
+                                            {{common.covertJobTitleToString(user.job_title)}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Giới Tính</td>
+                                        <td class="value">
+                                            {{common.convertGenderToString(user.gender)}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-profile">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Nghiên cứu khoa học</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="value" >
+                                            <span *ngFor="let item of user.achievements">- {{item}}<br></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-4 hidden-xs hidden-sm">
+                    <ul class="profile-info-list">
+                        
+                        <li>
+                            <div class="field">Năm sinh:</div>
+                            <div class="value">{{ common.covertLongToDate(user.dob) | date : "dd/MM/yyyy"}}</div>
+                        </li>
+                        <li>
+                            <div class="field">Địa chỉ:</div>
+                            <div class="value">
+                                <address class="m-b-0">
+                                  Địa chỉ : {{user.address_details}}<br />
+                                  Quận/Huyện :  {{user.district}}<br />
+                                   Tỉnh :  {{user.province}}
+                                </address>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="field">Điện thoại:</div>
+                            <div class="value">
+                                {{user.phone_number}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

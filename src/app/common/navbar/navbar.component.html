@@ -1,0 +1,96 @@
+<div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
+    <div class="row gx-0">
+        <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+            <div class="d-inline-flex align-items-center">
+                <div class="text-body py-2 pe-3 border-end" href=""><small></small></div>
+                <div class="text-body py-2 px-3 border-end" href=""><small></small></div>
+                <div class="text-body py-2 px-3 border-end" href=""><small></small></div>
+                <div class="text-body py-2 px-3 border-end" href=""><small></small></div>
+                <div class="text-body py-2 ps-3" href=""><small></small></div>
+            </div>
+        </div>
+        <div class="col-md-6 text-center text-lg-end">
+            <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
+                <div class="me-3 pe-3 border-end py-2">
+                    <p class="m-0"><i class="fa fa-envelope-open me-2"></i>dhgtvt@utc.edu.vn</p>
+                </div>
+                <div class="py-2">
+                    <p class="m-0"><i class="fa fa-phone-alt me-2"></i>(84.24) 37663311</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-light shadow-sm px-5 py-3 py-lg-0">
+    <a [routerLink]="['/home']" class="navbar-brand p-0 d-flex align-items-center">
+        <img style="height: 100px;" src="../../../assets/img/gtvt/logo-dai-hoc-giao-thong-van-tai-inkythuatso-01.png" alt="">
+        <div class="text-center">
+            <h4 class="text-white">Đại học</h4>
+            <h4 class="text-white">Giao Thông Vận Tải</h4>
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0 me-n3">
+            <!-- TRang chủ -->
+
+            <a [routerLink]="['/home']" class="nav-item nav-link">Trang chủ</a>
+
+            <!-- Giới thiệu -->
+
+            <div class="nav-item dropdown" >
+                <div style="cursor: pointer;" class="nav-link dropdown-toggle toggleNav" (click)="showIntroduction()" data-bs-toggle="dropdown">Giới thiệu</div>
+                <div #toggleNavIntroDuction class="dropdown-menu m-0">
+                    <a [routerLink]="['/introduce/lecturers']" class="dropdown-item">Cán bộ giảng viên</a>
+                    <a [routerLink]="['/introduce/courses']" class="dropdown-item">Các khóa</a>
+                    <a [routerLink]="['/introduce/collections']" class="dropdown-item">Bộ sưu tập</a>
+                </div>
+            </div>
+            <!-- Tài liệu -->
+
+            <a [routerLink]="['/documents']" class="nav-item nav-link">Tài liệu</a>
+            <div class="nav-item dropdown" >
+                <div style="cursor: pointer;" href="#" class="nav-link dropdown-toggle toggleNav " (click)="showPage()" data-bs-toggle="dropdown">Pages</div>
+                <div #toggleNavPage class="dropdown-menu m-0">
+                    <!-- <a [routerLink]="['/pages/forum']" class="dropdown-item">Diễn đàn</a> -->
+                    <a  [routerLink]="['/pages/news']" class="dropdown-item">Tin tức</a>
+                </div>
+            </div>
+
+            <!-- Liên lạc -->
+
+            <a [routerLink]="['/reports']" class="nav-item nav-link" >Phản hồi</a>
+
+            <!-- Đăng nhập -->
+            <a [routerLink]="['/signin']" *ngIf="!statusLogined" class="nav-item nav-link ms-md-5" >Đăng nhập</a>
+           
+
+            <!-- Quảng lý tài khoản -->
+            <div id="nav-user" class="ms-md-5 d-flex flex-row justify-content-center align-items-center"  *ngIf="statusLogined">
+                <!-- Thong bao  -->
+                <i  class="fa fa-bell p-4 position-relative" (click)="goToNotifications()" style="font-size: 25px; cursor: pointer;"><small class="text-white  position-absolute top-70 start-60 translate-middle bg-success rounded-circle p-1">4</small></i>
+                <div class="pe-4" style="font-size: 25px;" >|</div>
+                <!-- Quan ly ca nhan -->
+                <div class="nav-item dropdown" >
+                    <img style="cursor: pointer;" class="img-thumbnail rounded-circle dropdown-toggle toggleNav" (click)="showProfile()"
+                        data-bs-toggle="dropdown" width="55px" src="../../../assets/img/user.jpg" alt="">
+                    <div #toggleNavProfile class="dropdown-menu " style="margin-left: -100px;">
+                        <div class="text-center pb-0">Chào <span>Huy</span>!</div>
+                        <hr>
+                        <a [routerLink]="['/admin/management-users']" class="dropdown-item d-flex flex-row align-items-center">
+                            <mat-icon fontIcon="settings"></mat-icon>
+                            <div>Quản lý</div>
+                        </a>
+                        <a (click)="activeLogged()" class="dropdown-item d-flex flex-row align-items-center pt-2" >
+                            <mat-icon fontIcon="logout"></mat-icon>
+                            <div>Đăng xuất</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

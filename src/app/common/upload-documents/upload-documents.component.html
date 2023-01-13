@@ -1,0 +1,24 @@
+<mat-dialog-content style="max-height: 100vh;">
+    <div id="file-upload">
+        <form>
+            <!-- upload file len -->
+            <input type="file" class="file-input" enctype="multipart/form-data" (change)="onFileSelected($event)" #fileUpload>
+            <div class="upload">
+                <button color="primary" class="upload-btn" (click)="fileUpload.click()">
+                    {{fileName || "Upload file here !!!!"}}
+                </button>
+                <p style="color: red;">Lưu ý : File trong khoảng 100mb và phải là file PDF</p>
+            </div>
+            <select class="form-select">
+                <option value="An toàn thông tin">An toàn thông tin</option>
+                <option value="An toàn thông tin">An toàn Mạng</option>
+            </select>
+            <div class="form-group pb-4">
+                <label for="exampleFormControlInput1">Tên tài liệu</label>
+                <input type="text" class="form-control" id="name" placeholder="Công nghệ thông tin">
+            </div>
+            <button type="button" class="btn btn-success">Lưu lại</button>
+            <button type="button" class="btn btn-danger" (click)="closeDialog()">Đóng</button>
+        </form>
+    </div>
+</mat-dialog-content>

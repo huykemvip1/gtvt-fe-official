@@ -1,0 +1,16 @@
+#navbarCollapse a,
+#navbarCollapse .toggleNav{
+    color: black;
+    transition: 1s;
+    cursor: pointer;
+}
+#navbarCollapse a:hover,
+#navbarCollapse .toggleNav:hover{
+    color: white;
+}
+#navbarCollapse .fa-bell{
+    color: white;
+}
+.hiden{
+    display: none;
+}

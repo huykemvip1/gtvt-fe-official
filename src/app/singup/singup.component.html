@@ -1,0 +1,144 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <div>Bộ môn kỹ thuật Thông Tin</div>
+                <div>Truyền Thông</div>
+                <div class="brand_logo_container">
+                    <img src="../../assets/img/gtvt/logo-dai-hoc-giao-thong-van-tai-inkythuatso-01.png"
+                        class="brand_logo" alt="Logo">
+                </div>
+                <input type="submit" name="" value="Đăng nhập" (click)="goToSingin()" /><br />
+            </div>
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div *ngIf="isSignupSuccess" class="text-center mt-4">
+                            <h3 class="text-success">Đăng ký thành công !!!</h3>
+                            <a href="" class="text-center btn btn-success position-relative start-40">Trở về đăng
+                                nhập</a>
+                        </div>
+                        <div *ngIf="!isSignupSuccess  && statusCheck && !signupForm.valid" class="text-center mt-4">
+                            <h3 class="text-danger">Đăng ký thất bại !!!</h3>
+                            <h4 class="text-warning">Chú ý: Kiểm tra tài khoản, email trước khi đăng ký</h4>
+                        </div>
+                        <div class="register-heading">Đăng ký</div>
+                        <div class="row register-form" [formGroup]="signupForm">
+                            <div class="col-md-6 ">
+                                <div class="form-group mb-2">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input formControlName="username" type="text" class="form-control"
+                                            placeholder="Tên tài khoản *" value="" />
+                                        <mat-icon style="cursor: pointer;" class="fs-4" title="Kiểm tra tài khoản"
+                                            (click)="checkUsername()">error</mat-icon>
+                                    </div>
+                                    <div class="errors"
+                                        *ngIf=" (signupForm.controls.username.errors?.['required'] || signupForm.controls.username.errors?.['minlength']) && statusCheck 
+                                         || isExistUsername && (signupForm.controls.username.errors?.['required'] || signupForm.controls.username.errors?.['minlength'])">
+                                        Ít nhất là 8 kí tự
+                                    </div>
+                                    <div class="errors"
+                                        *ngIf="isExistUsername && (!signupForm.controls.username.errors?.['required'] && !signupForm.controls.username.errors?.['minlength'])">
+                                        Tài khoản đã tồn tại
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="first_name" type="text" class="form-control"
+                                        placeholder="Họ *" value="" required />
+                                    <div class="errors"
+                                        *ngIf="signupForm.controls.first_name.errors?.['required'] && statusCheck">
+                                        Không được bỏ trống
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="last_name" type="text" class="form-control"
+                                        placeholder="Tên *" value="" required />
+                                    <div class="errors"
+                                        *ngIf="signupForm.controls.last_name.errors?.['required'] && statusCheck ">
+                                        Không được bỏ trống
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="password" type="password" class="form-control"
+                                        placeholder="Mật khẩu *" value="" required />
+                                    <div class="errors"
+                                        *ngIf=" (signupForm.controls.password.errors?.['required'] || signupForm.controls.password.errors?.['minlength']) && statusCheck">
+                                        Ít nhất là 6 kí tự
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="re_password" type="password" class="form-control"
+                                        placeholder="Nhập lại mật khẩu *" value="" />
+                                    <div class="errors" *ngIf="checkRePassword && statusCheck">
+                                        Mật khẩu không khớp
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <select formControlName="gender">
+                                        <option value=null disabled>Giới tính</option>
+                                        <option value={{genderValue.NAM.value}}>{{genderValue.NAM.display}}</option>
+                                        <option value={{genderValue.NU.value}}>{{genderValue.NU.display}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <div class="d-flex flex-row align-items-center g-2">
+                                        <input formControlName="email" type="email" class="form-control"
+                                            placeholder="Email *" value="" required />
+                                        <mat-icon style="cursor: pointer;" class="fs-4" title="Kiểm tra email"
+                                            (click)="checkEmail()">error</mat-icon>
+                                    </div>
+                                    <div class="errors"
+                                        *ngIf=" (signupForm.controls.email.errors?.['required'] || signupForm.controls.email.errors?.['email']) && statusCheck 
+                                            || isExistEmail && (signupForm.controls.email.errors?.['required'] || signupForm.controls.email.errors?.['email'])">
+                                        Email không chính xác
+                                    </div>
+                                    <div class="errors"
+                                        *ngIf="isExistEmail && (!signupForm.controls.email.errors?.['required'] && !signupForm.controls.email.errors?.['email'])">
+                                        Email đã tồn tại
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="phone_number" type="text" minlength="10" maxlength="10"
+                                        name="txtEmpPhone" class="form-control" placeholder="Điện thoại *" value=""
+                                        required />
+                                    <div class="errors"
+                                        *ngIf=" (signupForm.controls.phone_number.errors?.['required'] || signupForm.controls.phone_number.errors?.['pattern']) && statusCheck">
+                                        Số điện thoại không chính xác
+                                    </div>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <select formControlName="question_security" class="form-control">
+                                        <option value=null disabled>Chọn một câu hỏi bảo mật </option>
+                                        <option value={{questionValue.CoVan.value}}>{{questionValue.CoVan.display}}
+                                        </option>
+                                        <option value={{questionValue.Khoa.value}}>{{questionValue.Khoa.display}}
+                                        </option>
+                                        <option value={{questionValue.MonYeuThich.value}}>
+                                            {{questionValue.MonYeuThich.display}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input formControlName="answer_security" type="text" class="form-control"
+                                        placeholder="Trả lời câu hỏi *" value="" required />
+                                    <div class="errors"
+                                        *ngIf="signupForm.controls.answer_security.errors?.['required'] && statusCheck">
+                                        Không được bỏ trống
+                                    </div>
+                                </div>
+                                <input (click)="signup()" type="submit" class="btnRegister" value="Đăng ký" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

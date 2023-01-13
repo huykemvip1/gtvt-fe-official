@@ -1,0 +1,75 @@
+
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            <!-- begin profile -->
+            <div class="profile">
+               <div class="profile-header">
+                  <!-- BEGIN profile-header-cover -->
+                  <div class="profile-header-cover"></div>
+                  <!-- END profile-header-cover -->
+                  <!-- BEGIN profile-header-content -->
+                  <div class="profile-header-content">
+                     <!-- BEGIN profile-header-img -->
+                     <div class="profile-header-img">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                     </div>
+                     <!-- END profile-header-img -->
+                     <!-- BEGIN profile-header-info -->
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5">{{academicAdvisor?.first_name}} {{academicAdvisor?.last_name}}</h4>
+                        <p class="m-b-10">{{common.covertJobPositionToString(academicAdvisor?.job_position)}}</p>
+                     </div>
+                     <!-- END profile-header-info -->
+                  </div>
+                  <!-- END profile-header-content -->
+               </div>
+            </div>
+            <!-- end profile -->
+            <!-- begin profile-content -->
+            <div class="profile-content">
+               <!-- begin tab-content -->
+               <div class="tab-content p-0">
+                  <!-- begin #profile-friends tab -->
+                  <div class="tab-pane fade in active show" id="profile-friends">
+                     <h4 class="m-t-0 m-b-20">Danh sách sinh viên- {{course.name}} (<span>{{students?.length}}</span>)</h4>
+                     <!-- begin row -->
+                     <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+                        <div class="col" *ngFor="let student of students">
+                           <div class="card radius-15">
+                              <div class="card-body text-center">
+                                 <div class="p-4 border radius-15">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="110" height="110" class="rounded-circle shadow" alt="">
+                                    <h5 class="mb-0 mt-5">{{student.first_name}} {{student.last_name}}</h5>
+                                    <p class="mb-3">Sinh viên</p>
+                                    <div class="d-grid"> <div (click)="userDetails(student.id)" class="btn btn-outline-primary radius-15">Chi tiết</div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     
+                  </div>
+                  <!-- end #profile-friends tab -->
+               </div>
+               <!-- end tab-content -->
+            </div>
+            <!-- end profile-content -->
+         </div>
+         <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item " *ngIf="pageCurrent !== 1">
+                <a  class="page-link user-select-none" (click)="previousPage()" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+               <li class="page-item {{positionSelected == pageCurrent ? 'active' : ''}}"><a class="page-link" [routerLink]="['/course',course.id] " [queryParams]="{page : pageCurrent}">{{pageCurrent}}</a></li>
+               <li *ngIf="pageCurrent+1 < numberPages" class="page-item {{positionSelected == pageCurrent+1 ? 'active' : ''}}"><a class="page-link" [routerLink]="['/course',course.id] " [queryParams]="{page : pageCurrent+1}">{{pageCurrent+1}}</a></li>
+               <li *ngIf="pageCurrent+2 < numberPages" class="page-item {{positionSelected == pageCurrent+2 ? 'active' : ''}}"><a class="page-link" [routerLink]="['/course',course.id] " [queryParams]="{page : pageCurrent+2}">{{pageCurrent+2}}</a></li>
+              <li class="page-item" *ngIf="pageCurrent+2 < numberPages">
+                <a class="page-link user-select-none" (click)="nextPage()">Next</a>
+              </li>
+            </ul>
+          </nav>
+      </div>
+   </div>
+</div>

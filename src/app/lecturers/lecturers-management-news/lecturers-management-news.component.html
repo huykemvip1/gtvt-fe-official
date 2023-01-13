@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
+    integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+    integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<div class="lecturers">
+    <app-lecturers></app-lecturers>
+    <div class="container ">
+
+        <div class="row align-items-center justify-content-end">
+            <div class="d-flex flex-row gap-4 mt-4">
+                <!-- Lọc theo tên người dùng -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Tên tài liệu</mat-label>
+                    <input matInput placeholder="Nguyễn Đình Huy">
+                    <mat-icon matPrefix>search</mat-icon>
+                </mat-form-field>
+                <!-- Lọc theo môn học -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Mục lục</mat-label>
+                    <mat-select>
+                        <mat-option>Khoa học</mat-option>
+                        <mat-option value="valid">Tuyển dụng</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="d-flex flex-row-reverse w-50">
+                    <!-- Xóa  -->
+                    <button mat-fab class="ms-2" style="background-color: red;">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <!-- Thêm -->
+                    <button (click)="addNews()" mat-fab style="background-color: green;">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="min-height: 500px;">
+            <div class="col-lg-12">
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table project-list-table table-nowrap align-middle table-borderless">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">Tên tài liệu</th>
+                                    <th scope="col">Mục lục</th>
+                                    <th scope="col">Thời gian</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="ps-4">
+                                        <div class="form-check font-size-16"><input type="checkbox"
+                                                class="form-check-input" id="contacusercheck5" /><label
+                                                class="form-check-label" for="contacusercheck5"></label></div>
+                                    </th>
+                                    <td>Sự phát triển của Cáp Quang</td>
+                                    <td><span class="badge badge-soft-success mb-0">Khoa học</span></td>
+                                    <td>13:00:00 25-07-2022</td>
+
+                                    <td>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <mat-icon>delete</mat-icon>
+                                            </li>
+                                            <li class="list-inline-item pe-auto" (click)="showNewsDetail('baibao1')">
+                                                <mat-icon>visibility</mat-icon>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="ps-4">
+                                        <div class="form-check font-size-16"><input type="checkbox"
+                                                class="form-check-input" id="contacusercheck5" /><label
+                                                class="form-check-label" for="contacusercheck5"></label></div>
+                                    </th>
+                                    <td>Spring boot</td>
+                                    <td><span class="badge badge-soft-info mb-0">Đang diễn ra</span></td>
+                                    <td>13:00:00 25-07-2022</td>
+
+                                    <td>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <mat-icon>delete</mat-icon>
+                                            </li>
+                                            <li class="list-inline-item" >
+                                                <mat-icon>visibility</mat-icon>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="ps-4">
+                                        <div class="form-check font-size-16"><input type="checkbox"
+                                                class="form-check-input" id="contacusercheck5" /><label
+                                                class="form-check-label" for="contacusercheck5"></label></div>
+                                    </th>
+                                    <td>
+                                        Sách 4G
+                                    </td>
+                                    <td><span class="badge badge-soft-danger mb-0">Tuyển dụng</span></td>
+                                    <td>13:00:00 25-07-2022</td>
+
+                                    <td>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <mat-icon>delete</mat-icon>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <mat-icon>visibility</mat-icon>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0 align-items-center justify-content-end pb-4">
+            <div class="col-sm-6">
+                <div class="float-sm-end">
+                    <ul class="pagination mb-sm-0">
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item">
+                            <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

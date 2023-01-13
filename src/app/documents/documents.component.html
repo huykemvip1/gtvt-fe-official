@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+<div class="container">
+    
+    <div class="row align-items-center justify-content-end">
+        <div class="d-flex flex-row gap-4 mt-4">
+            <!-- Lọc theo tên người dùng -->
+            <mat-form-field appearance="fill">
+                <mat-label>Tên tài liệu</mat-label>
+                <input (input)="changeSearch()" [formControl]="nameForm" matInput placeholder="Giáo trình">
+                <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
+            <!-- Lọc theo môn học -->
+            <mat-form-field appearance="fill">
+                <mat-label>Môn học</mat-label>
+                <mat-select [formControl]="idForm" (ngModelChange)="changeSearch()">
+                    <mat-option  *ngFor="let item of subjectPrograms" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="table-responsive">
+                    <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tên tài liệu</th>
+                                <th scope="col">Môn học</th>
+                                <th scope="col">Tác giả</th>
+                                <th scope="col">Download</th>
+                                <th scope="col" style="width: 200px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let document of documents, let i = index">
+                                
+                                <td>{{document.name}}</td>
+                                <td><span class="badge badge-soft-success mb-0">{{document.subject_program.name}}</span></td>
+                                <td>{{document.author}}</td>
+                                <td><a href="http://localhost:8080/api/v1/files/download/{{document.id}}.pdf">Click</a></td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a (click)="actionLike(document.id,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="fa fa-thumbs-up font-size-18"><small>{{document.like_number}}</small></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a (click)="actionFavorite(document.id,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="fa fa-heart font-size-18"><small>{{document.favorite_number}}</small></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                
+                                <td>Spring boot</td>
+                                <td><span class="badge badge-soft-info mb-0">Lập trình Java</span></td>
+                                <td>Nguyễn Lê Văn</td>
+                                <td><a href="">Click</a></td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="fa fa-thumbs-up font-size-18"><small>12</small></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="fa fa-heart font-size-18"><small>12</small></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    Sách 4G
+                                </td>
+                                <td><span class="badge badge-soft-danger mb-0">Điện thoại di động</span></td>
+                                <td>Nguyễn Phương Anh</td>
+                                <td><a href="">Click</a></td>
+                                <td>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="fa fa-thumbs-up font-size-18"><small>12</small></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="fa fa-heart font-size-18"><small>12</small></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr> -->
+                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0 align-items-center justify-content-end pb-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item " *ngIf="pageCurrent !== 1">
+                    <a class="page-link user-select-none" (click)="previousPage()" tabindex="-1"
+                        aria-disabled="true">Previous</a>
+                </li>
+                <li *ngIf="pageCurrent < numberPages" class="page-item {{positionSelected == pageCurrent ? 'active' : ''}}"><a class="page-link"
+                        [routerLink]="['/introduce/collections'] "
+                        [queryParams]="{page : pageCurrent}">{{pageCurrent}}</a></li>
+                <li *ngIf="pageCurrent+1 < numberPages"
+                    class="page-item {{positionSelected == pageCurrent+1 ? 'active' : ''}}"><a class="page-link"
+                        [routerLink]="['/introduce/collections'] "
+                        [queryParams]="{page : pageCurrent+1}">{{pageCurrent+1}}</a></li>
+                <li *ngIf="pageCurrent+2 < numberPages"
+                    class="page-item {{positionSelected == pageCurrent+2 ? 'active' : ''}}"><a class="page-link"
+                        [routerLink]="['/introduce/collections'] "
+                        [queryParams]="{page : pageCurrent+2}">{{pageCurrent+2}}</a></li>
+                <li class="page-item" *ngIf="pageCurrent+2 < numberPages">
+                    <a class="page-link user-select-none" (click)="nextPage()">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
